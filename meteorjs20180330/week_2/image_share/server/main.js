@@ -1,6 +1,21 @@
-import { Meteor } from 'meteor/meteor';
+Images = new Mongo.Collection("images");
 
-Meteor.startup(() => {
-  // code to run on server at startup
-  console.log("this is the server")
-});
+if (Meteor.isServer){
+    Meteor.startup(function(){
+        console.log("ddddddd");
+        console.log(Images.find().count());
+        if (Images.find().count() == 0){
+            console.log(Images.find().count());
+            for (var i=1;i<4;i++){
+              Images.insert(
+                  {
+                      img_src:"mech"+i+".jpg",
+                      img_alt:"mech"+i
+                  }
+              );
+              console.log(Images.find().count());
+            }
+
+        }
+    });
+}

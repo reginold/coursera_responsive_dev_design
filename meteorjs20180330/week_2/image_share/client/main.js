@@ -21,7 +21,8 @@ if (Meteor.isClient){
       img_alt:"this is beard"
     }
   ];
-  Template.images.helpers({images:image_data});
+  //Template.images.helpers({images:image_data});
+  Template.images.helpers({images:Images.find()});
   Template.images.events({
     'click .js-image':function(event){
       console.log(event);
