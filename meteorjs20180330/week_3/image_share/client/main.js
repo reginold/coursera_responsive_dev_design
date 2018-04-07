@@ -13,6 +13,16 @@ if (Meteor.isClient){
   Template.images.helpers({images:
     Images.find({},{sort:{createdOn:-1,rating:-1}})
   });
+  Template.body.helpers({usernames:function(){
+    if(Meteor.user()){
+      return Meteor.user().emails[0].address;
+    }
+    else{
+      return "nobody";
+    }
+  }
+    
+  });
   Template.images.events({
     'click .js-image':function(event){
       console.log(event);
