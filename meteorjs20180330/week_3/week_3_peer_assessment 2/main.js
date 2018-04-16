@@ -9,17 +9,15 @@ if (Meteor.isClient){
      'click .js-add-site':function(event){
          var url = $('#url_input').val();// get the form value using jquery...
          var user = "";
-         var user = Meteor.user().emails[0].address;
-         console.log(user);
-        //  if(Meteor.user()){
-        //     var user = Meteor.user().emails[0].address;
-        //     console.log(user);
-        //     return user;
-        //  }
-        //  else{
-        //     console.log("no user");
-        //     return "anonymous person";
-        //  }
+         if(Meteor.user()){
+            user = Meteor.user().emails[0].address;            
+            console.log(user);
+            //return user;
+         }
+         else{
+            console.log("no user");
+            user = "anonymous person";
+         }
        
          var site = {"url":url,
                      "createdOn":new Date(),
